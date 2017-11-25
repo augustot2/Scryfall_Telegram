@@ -7,11 +7,22 @@ setup(
     name='scryfall-telegram',
     version=__version__,
     description='Telegram bot to interact with the Scryfall API',
-    long_description='',
     author='Oliver Hofkens',
-    author_email='oliver@novemberfive.co',
-    url='',
+    author_email='oliver.hofkens@tuta.io',
+    url='https://github.com/OliverHofkens/Scryfall_Telegram',
     packages=['scryfall_telegram'],
+    keywords="telegram scryfall mtg tcg bot",
+    classifiers=[
+        "Development Status :: 3 - Alpha",
+        "Environment :: No Input/Output (Daemon)",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.6",
+        "Topic :: Communications :: Chat",
+        "Topic :: Games/Entertainment"
+    ],
     entry_points={
         'console_scripts': [
             '%s=scryfall_telegram.main:main' % __prog__,
