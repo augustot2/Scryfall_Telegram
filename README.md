@@ -3,7 +3,7 @@
 Scryfall Telegram is an inline [Telegram](https://telegram.org/) bot that uses
 [Scryfall](https://scryfall.com/)'s API to search Magic: The Gathering cards.
 
-All Scryfall syntax that can be understood by the API can be used. A full list
+All Scryfall syntax that can be understood by the API can be used. A full reference
 can be found here: [Scryfall Syntax Reference](https://scryfall.com/docs/reference).
 
 Some examples:
@@ -13,8 +13,8 @@ Some examples:
 
 ## Running it yourself
 
-This bot lives on Telegram: [t.me/ScryfallBot](t.me/ScryfallBot)
-But you can easily run a copy of it yourself:
+This bot lives on Telegram: [t.me/ScryfallBot](t.me/ScryfallBot),
+but you can easily run a copy of it yourself:
 
 ### Requirements
 - Python 3.6
