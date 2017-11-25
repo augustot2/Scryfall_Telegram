@@ -1,4 +1,9 @@
+import logging
+
 import requests
+
+
+log = logging.getLogger(__name__)
 
 
 BASE_URL = "https://api.scryfall.com/"
@@ -12,6 +17,7 @@ def cards_search(query: str, order: str = None, page: int = 1):
                                 'page': page
                             })
     content = response.json()
+    log.debug(f"Scryfall Response: {content}")
 
     return content
 

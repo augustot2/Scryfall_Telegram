@@ -2,15 +2,22 @@ from telegram import InlineQueryResultArticle, InputTextMessageContent
 
 
 def cards_to_articles(cards: dict):
-    return [InlineQueryResultArticle(
+    results = []
+    for card in cards['data']:
+        description = card.get('oracle_text', card.get('type_line', ''))
+        thumbnail = card['image_uris']['small'] if 'image_uris' in card else None
+
+        results.append(InlineQueryResultArticle(
             id=card['id'],
             title=card['name'],
             url=card['scryfall_uri'],
-            description=card['oracle_text'],
-            thumb_url=card['image_uris']['small'],
+            description=description,
+            thumb_url=thumbnail,
             hide_url=True,
             input_message_content=InputTextMessageContent(
                 message_text=card['scryfall_uri'],
                 disable_web_page_preview=False
             )
-            ) for card in cards['data']]
+            ))
+
+    return results

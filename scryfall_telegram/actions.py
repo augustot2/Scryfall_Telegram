@@ -17,6 +17,6 @@ def inline_search(bot: Bot, update: Update):
         return
 
     results = scryfall.cards_search(query)
-    items = parse.cards_to_articles(results)
+    items = parse.cards_to_articles(results)[1:50]
 
     bot.answer_inline_query(update.inline_query.id, items)
