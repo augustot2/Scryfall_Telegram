@@ -1,25 +1,42 @@
 import logging
+import json
+import os
+import sys
 
-from telegram.ext import Updater, CommandHandler, InlineQueryHandler
+from cloudfn.http import handle_http_event, Response
+from telegram import Bot, Update
+from telegram.ext import Dispatcher, CommandHandler, InlineQueryHandler
 
 import scryfall_telegram.actions as actions
 
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
+log = logging.getLogger(__name__)
+log.info(f"Bot starting! Logging at level {log.getEffectiveLevel()}")
 
-def main():
-    with open('./token.txt') as f:
-        token = f.read().strip()
+with open(os.path.join(os.path.dirname(sys.executable), 'token.txt')) as f:
+    token = f.read().strip()
+bot = Bot(token)
 
-    updater = Updater(token=token)
-    dispatcher = updater.dispatcher
+with open(os.path.join(os.path.dirname(sys.executable), 'endpoint.txt')) as f:
+    endpoint = f.read().strip()
+bot.set_webhook(endpoint)
+
+dispatcher = Dispatcher(bot, None, workers=0)
+
+dispatcher.add_handler(CommandHandler('start', actions.start))
+dispatcher.add_handler(InlineQueryHandler(actions.inline_search))
 
 
-    dispatcher.add_handler(CommandHandler('start', actions.start))
-    dispatcher.add_handler(InlineQueryHandler(actions.inline_search))
+def handle_http(req):
+    global bot, dispatcher
 
-    updater.start_polling()
+    update = Update.de_json(json.loads(req.body), bot)
+    dispatcher.process_update(update)
+
+    return Response(
+        status_code=200
+    )
 
 
-if __name__ == "__main__":
-    main()
+handle_http_event(handle_http)
