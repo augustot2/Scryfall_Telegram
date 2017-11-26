@@ -8,11 +8,12 @@ from telegram import Bot, Update
 from telegram.ext import Dispatcher, CommandHandler, InlineQueryHandler
 
 import scryfall_telegram.actions as actions
+import scryfall_telegram.hooks
 
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 log = logging.getLogger(__name__)
-log.info(f"Bot starting! Logging at level {log.getEffectiveLevel()}")
+log.info("Bot starting!")
 
 with open(os.path.join(os.path.dirname(sys.executable), 'token.txt')) as f:
     token = f.read().strip()
