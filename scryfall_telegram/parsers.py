@@ -1,4 +1,10 @@
+import logging
+
 from telegram import InlineQueryResultArticle, InputTextMessageContent
+
+
+log = logging.getLogger(__name__)
+log.setLevel(logging.INFO)
 
 
 def cards_to_articles(cards: dict):
@@ -20,4 +26,5 @@ def cards_to_articles(cards: dict):
             )
             ))
 
+    log.info("Found {} cards!".format(len(results)))
     return results

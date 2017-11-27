@@ -19,9 +19,9 @@ with open(os.path.join(os.path.dirname(sys.executable), 'token.txt')) as f:
     token = f.read().strip()
 bot = Bot(token)
 
-with open(os.path.join(os.path.dirname(sys.executable), 'endpoint.txt')) as f:
-    endpoint = f.read().strip()
-bot.set_webhook(endpoint)
+#with open(os.path.join(os.path.dirname(sys.executable), 'endpoint.txt')) as f:
+#    endpoint = f.read().strip()
+#bot.set_webhook(endpoint)
 
 dispatcher = Dispatcher(bot, None, workers=0)
 

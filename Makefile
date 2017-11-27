@@ -15,7 +15,7 @@ emulate: cloudfn
 clean:
 	rm -r cloudfn
 
-deploy: cloudfn-prod
+deploy:
 	cd cloudfn/target && \
 	gcloud beta functions deploy scryfall-telegram --trigger-http --stage-bucket scryfall-telegram --memory 128 && \
 	cd ../..

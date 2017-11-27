@@ -27,6 +27,5 @@ setup(
         'console_scripts': [
             '%s=scryfall_telegram.main:main' % __prog__,
         ]
-    },
-    install_requires=[i.strip() for i in open("requirements.txt").readlines()]
+    }
 )

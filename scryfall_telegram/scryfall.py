@@ -18,11 +18,10 @@ def cards_search(query: str, order: str = None, page: int = 1):
                             })
 
     if response.status_code >= 400:
-        log.error(f"Scryfall API error: {response.text}")
+        log.error("Scryfall API error: " + scryfall)
         return None
 
     content = response.json()
-    log.debug(f"Scryfall Response: {content}")
 
     return content
 
