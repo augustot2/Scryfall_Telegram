@@ -13,12 +13,11 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 log = logging.getLogger(__name__)
 log.info("Bot starting!")
 
+TOKEN = os.getenv("TELEGRAM_TOKEN")
 PORT = int(os.environ.get('PORT', '5000'))
 APPNAME = 'pure-beyond-46891'
 
-with open(os.path.join(os.path.dirname(sys.executable), 'token.txt')) as f:
-    TOKEN = f.read().strip()
-updater = Updater(token)
+updater = Updater(TOKEN)
 
 dispatcher = updater.dispatcher
 
