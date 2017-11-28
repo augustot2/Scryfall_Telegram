@@ -9,7 +9,7 @@ log.setLevel(logging.INFO)
 
 def cards_to_articles(cards: dict):
     results = []
-    for card in cards['data']:
+    for card in cards['data'][:49]:
         description = card.get('oracle_text', card.get('type_line', ''))
         thumbnail = card['image_uris']['small'] if 'image_uris' in card else None
 
