@@ -1,5 +1,7 @@
 # scryfall_telegram #
 
+*Note: This project still works, but @ScryfallBot is now powered by this spiritual successor: [scryfall-telegram-rs-serverless](https://github.com/OliverHofkens/scryfall-telegram-rs-serverless)*
+
 Scryfall Telegram is an inline [Telegram](https://telegram.org/) bot that uses
 [Scryfall](https://scryfall.com/)'s API to search Magic: The Gathering cards.
 
