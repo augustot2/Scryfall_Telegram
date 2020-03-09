@@ -14,6 +14,7 @@ def cards_search(query: str, order: str = None, page: int = 1):
                             params={
                                 'q': query,
                                 'order': order or 'name',
+                                "include_multilingual": "true",
                                 'page': page
                             })
 
