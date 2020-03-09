@@ -13,6 +13,7 @@ def cards_search(query: str, order: str = None, page: int = 1):
     response = requests.get(BASE_URL + 'cards/search',
                             params={
                                 'q': query,
+                                'include_multilingual': "true",
                                 'order': order or 'name',
                                 'page': page
                             })
